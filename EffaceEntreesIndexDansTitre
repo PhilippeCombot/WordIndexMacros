@@ -1,0 +1,30 @@
+Sub EffaceEntreesIndexDansTitres()
+    Selection.HomeKey Unit:=wdStory, Extend:=wdMove
+    With Selection.Find
+        .ClearFormatting
+       .Text = "^d"
+       .Replacement.Text = ""
+       .Forward = True
+       .Wrap = wdFindContinue
+       .Format = False
+       .MatchCase = False
+       .MatchWholeWord = False
+       .MatchWildcards = False
+       .MatchSoundsLike = False
+       .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute
+    Do While Selection.Find.Found = True
+        If Selection.Paragraphs.OutlineLevel = wdOutlineLevel1 Or _
+        Selection.Paragraphs.OutlineLevel = wdOutlineLevel2 Or _
+        Selection.Paragraphs.OutlineLevel = wdOutlineLevel3 Or _
+        Selection.Paragraphs.OutlineLevel = wdOutlineLevel4 Or _
+        Selection.Paragraphs.OutlineLevel = wdOutlineLevel5 Or _
+        Selection.Paragraphs.OutlineLevel = wdOutlineLevel6 Or _
+        Selection.Paragraphs.OutlineLevel = wdOutlineLevel7 Then
+            Selection.Delete
+        End If
+        Selection.Find.Execute
+    Loop
+MsgBox ("Fini !")
+End Sub
