@@ -1,0 +1,25 @@
+Sub EffaceEntreesIndexDansNotes()
+    Dim MaNote As Footnote
+    For Each MaNote In ActiveDocument.Footnotes
+        MaNote.Range.Select
+        With Selection.Find
+            .ClearFormatting
+           .Text = "^d"
+           .Replacement.Text = ""
+           .Forward = True
+           .Wrap = wdFindContinue
+           .Format = False
+           .MatchCase = False
+           .MatchWholeWord = False
+           .MatchWildcards = False
+           .MatchSoundsLike = False
+           .MatchAllWordForms = False
+        End With
+        Selection.Find.Execute
+        Do While Selection.Find.Found = True
+            Selection.Delete
+            Selection.Find.Execute
+        Loop
+    Next MaNote
+MsgBox ("Fini !")
+End Sub
