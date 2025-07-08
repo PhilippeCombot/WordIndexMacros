@@ -1,0 +1,10 @@
+Sub MetLesNumeros()
+Dim Parag As Paragraph
+For Each Parag In ActiveDocument.Paragraphs
+    If Parag.Style = "Normal" And Parag.Range.Characters.Count > 1 Then
+        Parag.Range.Select
+        Selection.Style = ActiveDocument.Styles("Liste à numéros")
+    End If
+Next Parag
+ActiveDocument.Range(Start:=0, End:=0).Select
+End Sub
