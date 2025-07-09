@@ -1,0 +1,25 @@
+Sub InsereRefStyle()
+'
+'0.1. Il faut que les entrées d'index soient présentes dans le document (champs XE)
+'0.2. Il faut aussi avoir des paragraphes numérotés automatiquement (style Liste à numéros 5)
+'1. Je cherche chaque entrée d'index (^d)
+'2. J'insère le champ qui récupère le numéro du paragraphe : \t STYLEREF "Liste à numéros 5"
+'
+Dim Champ As Field
+Dim LaChaine As String
+For Each Champ In ActiveDocument.Fields
+    If Champ.Type = wdFieldIndexEntry Then
+        'Je place le curseur à la fin du champ
+        Champ.Select
+        Selection.Collapse Direction:=wdCollapseEnd
+        Selection.MoveLeft Unit:=wdCharacter
+        'J'insère le commutateur
+        Selection.TypeText Text:="\t "
+  'J'insère le champ
+  'Vérifier que le style des paragraphes numérotés est bien Liste à numéros 5, sinon modifier ici
+        Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, Text:= _
+        "STYLEREF ""Liste à numéros 5"" \n ", PreserveFormatting:=True
+    End If
+Next Champ
+MsgBox ("Fini !")
+End Sub
