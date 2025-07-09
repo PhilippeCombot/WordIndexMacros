@@ -6,7 +6,7 @@ Microsoft Word Macros to buid an index with the paragraph numbers
 ## 1. Numéroter les paragraphes
 
 Ne prendre que le corps du texte : copier-coller dans un nouveau document, enlever l’avant-texte qui ne doit pas être numéroté, et enlever la fin du document (tables, bibliographie, annexes…) qui ne doit pas recevoir de numérotation.
-Pressez en même temps les touches Alt et F11.  Cliquez deux fois sur ThisDocument à gauche, et collez la macro **MetLesNumeros()**.
+Pressez en même temps les touches Alt et F11.  Cliquez deux fois sur ThisDocument à gauche, collez la macro **MetLesNumeros()** puis cliquez sur le bouton Exécuter (F5).
 
 ## 2. Indexation
 
